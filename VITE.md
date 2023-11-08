@@ -28,18 +28,43 @@ import ProjectList from './components/ProjectList.vue';
 
 export default {
   data() {
-    return {}  
+    return {
+        projects: [],
+
+        api: {
+            baseUrl : 'http://127.0.0.1:8000/api/projects',
+        },
+    }  
   },
 
-  created() {
-    axios
-    .get('http://127.0.0.1:8000/api/projects')
-    .then((response) => {
-      const projects = response.data.data;
-    })
-   
-    ;
+  methods: {
+    fetchProjects(uri = this.api.baseUrl + 'projects') {
+        axios
+        .get(uri)
+        .then((response) => {
+            this.projects = response.data.data;
+        })
+    },
   },
+
+    created() {
+        this.fetchProjects();
+    },
+
   components: {ProjectList},
+
 }
+
+```
+7. Tramite props mando da App a ProjectList la mia lista dei progetti
+
+```js
+<ProjectList :pincopallino="projects"></ProjectList>
+
+---
+
+ props:{
+      pincopallino: Array,
+  } 
+
 ```
