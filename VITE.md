@@ -1,6 +1,6 @@
 1. Nel terminale creare file
 ---
-2. pulire app vue
+2. pulire app.vue
 ---
 3. Installare sass - npm install -D sass-loader sass
 ---
@@ -32,7 +32,7 @@ export default {
         projects: [],
 
         api: {
-            baseUrl : 'http://127.0.0.1:8000/api/projects',
+            baseUrl : 'http://127.0.0.1:8000/api/',
         },
     }  
   },
@@ -68,3 +68,27 @@ export default {
   } 
 
 ```
+--- 
+
+## Vue Router
+
+1. Creo cartella src/router/index.js dove mi importo il router
+
+
+```js
+
+import { createWebHistory, createRouter } from "vue-router";
+
+const router = createRouter({
+    //Aggiugno history
+    history: createWebHistory(),
+
+    //Aggiungo Rotte
+    routes: [],
+});
+
+
+export { router };
+
+```
+
