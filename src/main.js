@@ -1,5 +1,20 @@
 import { createApp } from 'vue'
 import './assets/scss/style.scss'
-import App from './App.vue'
+
+//import router 
+import { router } from './router/index';
+
+//import bootstrap
 import 'bootstrap/dist/css/bootstrap.css';
-createApp(App).mount('#app')
+
+//import fontawsome
+
+
+
+import App from './App.vue'
+
+
+const app = createApp(App);
+app.component();
+app.use(router);
+app.mount('#app');

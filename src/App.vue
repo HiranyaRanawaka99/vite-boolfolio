@@ -47,7 +47,7 @@ export default {
 <hr>
 <ProjectList :projects="projects"></ProjectList>
 
-<div class="next-prev-buttons m-5 d-flex justify-content-between">
+<div class="next-prev-buttons m-5  d-flex justify-content-between">
   <button class="btn btn-primary" @click="fetchProjects(pagination.prev)">Previous page</button>
   <button class="btn btn-primary" @click="fetchProjects(pagination.next)">Next page</button>
 </div>

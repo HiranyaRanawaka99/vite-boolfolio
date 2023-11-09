@@ -72,7 +72,8 @@ export default {
 
 ## Vue Router
 
-1. Creo cartella src/router/index.js dove mi importo il router
+1. Comando  npm install vue-router@4 per installare
+2. Creo cartella src/router/index.js dove mi importo il router
 
 
 ```js
@@ -92,3 +93,56 @@ export { router };
 
 ```
 
+---
+
+3. Creo lo scaffolding e le pagine necessario per navigare
+- HomePage e BlogPage
+
+---
+
+4. Su index.js importo le rotte 
+
+```js
+import Homepage from '../pages/HomePage';
+import BlogPage from '../pages/BlogPage';
+
+const router = createRouter({
+    //Aggiugno history
+    history: createWebHistory(),
+
+    //Aggiungo Rotte
+    routes: [
+        {
+            name: 'homepage',
+            path: '/',
+            component: Homepage,
+        },
+        {
+            name: 'blogpage',
+            path: '/blog',
+            component: BlogPage,
+        }
+    ],
+
+});
+
+
+export { router };
+
+```
+---
+5. Su main.js mi importo il router 
+
+```js
+//import router 
+import { router } from './router/index';
+
+const app = createApp(App);
+app.component();
+app.use(router);
+app.mount('#app');
+
+```
+---
+
+6. 
