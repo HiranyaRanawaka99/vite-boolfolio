@@ -1,7 +1,8 @@
 import { createWebHistory, createRouter } from "vue-router";
 
 import Homepage from '../pages/HomePage.vue';
-import BlogPage from '../pages/BlogPage.vue';
+import BlogPage from '../pages/PortfolioPage.vue';
+import ProjectDetailPage from '../pages/ProjectDetailPage.vue';
 
 const router = createRouter({
     //Aggiugno history
@@ -15,9 +16,14 @@ const router = createRouter({
             component: Homepage,
         },
         {
-            name: 'blogpage',
-            path: '/blog',
+            name: 'portfoliopage',
+            path: '/portfolio',
             component: BlogPage,
+        },
+        {
+            name: 'projectdetailpage',
+            path: '/detail',
+            component: ProjectDetailPage,
         }
     ],
 

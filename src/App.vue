@@ -1,11 +1,13 @@
 <script>
-import ProjectList from './components/ProjectList.vue';
+import NavbarUi from './components/ui/NavbarUi.vue';
+import { router } from './router';
 
 export default {
   data() {
-    return {}  
+    return {
+    }  
   },
-  components: {ProjectList},
+  components: { NavbarUi, router },
 
 }
 
@@ -13,10 +15,8 @@ export default {
 
 
 <template>
-
-<h1>  Progetti </h1>
-<hr>
-<ProjectList></ProjectList>
+  <NavbarUi></NavbarUi>
+  <router-view></router-view>
 
 </template>
 
