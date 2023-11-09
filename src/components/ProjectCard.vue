@@ -20,7 +20,13 @@ export default {
 <div class="col">
     <div class="card h-100">
         <div class="card-header">
-            <span class="badge" :style = "{backgroundColor: project.technologies.color}"> {{ project.technologies.label }}</span>
+            <!-- <span class="badge" :style = "{backgroundColor: project.type.color}"> {{ project.type.tag }}</span> -->
+            <span class="badge rounded-pill"
+                v-for="(technology, index) in project.technologies"
+                :key="index"
+                :style="{ backgroundColor: technology.color }">
+                {{ technology.label }}
+            </span>
         </div>
         <div class="card-body">
         <h5 class="text-center"> {{ project.title }}</h5>
