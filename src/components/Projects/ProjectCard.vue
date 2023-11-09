@@ -21,11 +21,26 @@ export default {
 <div class="col">
     <div class="card h-100">
         <div class="card-header">
-           <p>tag:</p>
+            <span
+                class="badge"
+                :style="{ backgroundColor: project.type.color }">
+                {{ project.type.tag }}
+            </span>
         </div>
         <div class="card-body">
         <h5 class="text-center"> {{ project.title }}</h5>
-            <hr>
+        
+            <img 
+            v-if="project.cover_image" 
+            :src="project.cover_image" 
+            class="img-fluid mb-1 rounded" 
+            :class="{
+                'float-end': isDetail,
+                'w-50': isDetail,
+                'ms-1': isDetail,
+                }"
+            >
+
             <p> <b>Descrizione:</b> {{ project.description }}</p>
             <p> <b>Data:</b>{{ project.date }}</p>
             <p> <b>Link: </b>
@@ -43,7 +58,9 @@ export default {
         </div>
         <div 
         class="card-footer"
-        v-if="!isDetail">
+
+    
+            >
             <router-link 
             :to ="{ name: 'projectdetailpage', params: {id: project.id}}"> <button class="btn btn-primary"> Vedi </button> 
             </router-link>

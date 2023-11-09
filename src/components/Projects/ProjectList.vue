@@ -48,7 +48,7 @@ export default {
         <div class="col" v-for="project in projects">
             <ProjectCard 
             :isDetail="false"
-            :project = "project"
+            :project = "project"  
             > 
         </ProjectCard>
         </div>

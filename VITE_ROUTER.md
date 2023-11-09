@@ -70,7 +70,6 @@ export default {
   } 
 
 ```
---- 
 
 # Vue Router
 
@@ -98,12 +97,8 @@ export { router };
 
 ```
 
----
-
 3. Creo lo scaffolding e le pagine necessario per navigare
 - HomePage, PortfolioPage, ProjectDetailPage
-
----
 
 4. Su src/router/index.js importo le rotte 
 
@@ -214,4 +209,23 @@ v-if="project"></ProjectCard>
 </template>
 
 ```
+---
+10. ##### Per portare un un'immagine:
+
+- Su Laravel - Project model facciamo una funzinoe
+
+```php
+ public function getAbsUriImage() {
+        return $this->cover_image ? Storage::url($this->cover_image) : null;
+    }
+```
+    - $this->cover_image è il path 
+        - lo trasformiamo in un url assoluto 
+
+11. Nella funzione index e show passo il metodo soprascritto
+
+```php
+ $project->cover_image = $project->getAbsUriImage();
+
+ ```
 
