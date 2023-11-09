@@ -22,7 +22,7 @@ const router = createRouter({
         },
         {
             name: 'projectdetailpage',
-            path: '/detail',
+            path: '/detail/:id',
             component: ProjectDetailPage,
         }
     ],

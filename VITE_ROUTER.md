@@ -1,3 +1,5 @@
+# VITE
+
 1. Nel terminale creare file
 ---
 2. pulire app.vue
@@ -70,14 +72,17 @@ export default {
 ```
 --- 
 
-## Vue Router
+# Vue Router
 
-1. Comando  npm install vue-router@4 per installare
+1. Comando 
+```
+ npm install vue-router@4 per installare
+```
+
 2. Creo cartella src/router/index.js dove mi importo il router
 
 
 ```js
-
 import { createWebHistory, createRouter } from "vue-router";
 
 const router = createRouter({
@@ -96,11 +101,11 @@ export { router };
 ---
 
 3. Creo lo scaffolding e le pagine necessario per navigare
-- HomePage e BlogPage
+- HomePage, PortfolioPage, ProjectDetailPage
 
 ---
 
-4. Su index.js importo le rotte 
+4. Su src/router/index.js importo le rotte 
 
 ```js
 import Homepage from '../pages/HomePage';
@@ -131,7 +136,7 @@ export { router };
 
 ```
 ---
-5. Su main.js mi importo il router 
+5. Su src/main.js mi importo il router 
 
 ```js
 //import router 
@@ -145,4 +150,68 @@ app.mount('#app');
 ```
 ---
 
-6. 
+6. Per la navigazione usare 
+
+- Per visualizzare nella pagina:
+```html
+ <router-view> </router-view>
+```
+
+- Link per naviagare:
+```html 
+ <router-link class="nav-link active" aria-current="page" :to="{ name: 'portfoliopage'}"> Portfolio </router-link>
+```
+
+- Per passare parametri parametri
+
+```js
+  {
+    name: 'projectdetailpage',
+    path: '/detail/:id',
+    component: ProjectDetailPage,
+    }
+```
+
+```html 
+ <router-link :to ="{ name: 'projectdetailpage', params: {id: project.id}}"> <button class="btn btn-primary"> Vedi </button> </router-link>
+```
+- Stampo nella pagina di dettaglio il progetto con l'id sul quale clicco
+
+```js
+import axios from 'axios';
+import ProjectCard from '../components/projects/ProjectCard.vue';
+import {store} from '../data/store';
+
+export default {
+    data() {
+        return {
+            title: 'Dettagli progetto',
+
+            project: {},
+        }
+    },
+
+    created() {
+        axios
+        .get(store.api.baseUrl + 'projects/' + this.$route.params.id)
+        .then((response) => {
+            this.project = response.data;
+        })
+
+    },
+    components: {ProjectCard},
+}
+
+</script>
+
+
+<template>
+<h1> {{ title  }}</h1>
+<ProjectCard 
+:project="project"
+v-if="project"></ProjectCard>
+
+</template>
+
+```
+

@@ -24,9 +24,7 @@ export default {
         <li class="nav-item">
           <router-link class="nav-link active" aria-current="page" :to="{ name: 'portfoliopage'}"> Portfolio </router-link>
         </li>
-        <li class="nav-item">
-          <router-link class="nav-link active" aria-current="page" :to="{ name: 'projectdetailpage'}"> Portfolio </router-link>
-        </li>
+      
 
 
           <!-- <ul class="dropdown-menu">

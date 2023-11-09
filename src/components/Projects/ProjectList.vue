@@ -1,15 +1,15 @@
 <script>
 
 import axios from 'axios';
+import {store} from '../../data/store'
 import ProjectCard from './ProjectCard.vue';
 
 export default {
   data() {
     return {
+        store,
+
         projects: [],
-        api: {
-            baseUrl :'http://127.0.0.1:8000/api/',
-        },
 
         pagination: {
           next: null,
@@ -18,7 +18,7 @@ export default {
       };  
     },
     methods: {
-        fetchProjects(uri = this.api.baseUrl + 'projects') {
+        fetchProjects(uri = this.store.api.baseUrl + 'projects') {
             axios
             .get(uri)
             .then((response) => {
@@ -46,7 +46,11 @@ export default {
     <div 
     class="row row-cols-3 g-4">
         <div class="col" v-for="project in projects">
-            <ProjectCard :project = "project"> </ProjectCard>
+            <ProjectCard 
+            :isDetail="false"
+            :project = "project"
+            > 
+        </ProjectCard>
         </div>
     </div>
     <div class="next-prev-buttons m-5  d-flex justify-content-between">
