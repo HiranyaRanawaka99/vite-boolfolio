@@ -21,25 +21,30 @@ export default {
 <div class="col">
     <div class="card h-100">
         <div class="card-header">
-            <span
+            <div
                 class="badge"
+                v-if="project.type"
                 :style="{ backgroundColor: project.type.color }">
-                {{ project.type.tag }}
-            </span>
+                <router-link
+                :to= "{
+                    name: 'blog-category',
+                    params: {
+                    type_id: project.type_id
+                    }
+                }">
+                <p > {{ project.type.tag  }}</p>
+            </router-link>
+            </div>
+            <div v-else> Non categorizzato </div>
         </div>
         <div class="card-body">
         <h5 class="text-center"> {{ project.title }}</h5>
-        
-            <img 
+       
+            <!-- <img 
             v-if="project.cover_image" 
             :src="project.cover_image" 
             class="img-fluid mb-1 rounded" 
-            :class="{
-                'float-end': isDetail,
-                'w-50': isDetail,
-                'ms-1': isDetail,
-                }"
-            >
+            > -->
 
             <p> <b>Descrizione:</b> {{ project.description }}</p>
             <p> <b>Data:</b>{{ project.date }}</p>
@@ -58,9 +63,7 @@ export default {
         </div>
         <div 
         class="card-footer"
-
-    
-            >
+        v-if="!isDetail">
             <router-link 
             :to ="{ name: 'projectdetailpage', params: {id: project.id}}"> <button class="btn btn-primary"> Vedi </button> 
             </router-link>

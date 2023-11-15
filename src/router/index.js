@@ -3,7 +3,7 @@ import { createWebHistory, createRouter } from "vue-router";
 import Homepage from '../pages/HomePage.vue';
 import BlogPage from '../pages/PortfolioPage.vue';
 import ProjectDetailPage from '../pages/ProjectDetailPage.vue';
-import BlogCategory from '../pages/BlogCategory.vue';
+import BlogCategoryPage from '../pages/BlogCategoryPage.vue';
 
 const router = createRouter({
     //Aggiugno history
@@ -28,8 +28,8 @@ const router = createRouter({
         },
         {
             name: 'blog-category',
-            path: '/category',
-            component: BlogCategory,
+            path: '/blog/portofolio/:type_id',
+            component: BlogCategoryPage,
         }
     ],
 

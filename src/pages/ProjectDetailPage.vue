@@ -27,7 +27,6 @@ export default {
 
 
 <template>
-<h1> {{ title  }}</h1>
 <ProjectCard 
 :project="project"
 v-if="project"
