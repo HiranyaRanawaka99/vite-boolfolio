@@ -1,59 +1,43 @@
 <script>
-// import axios from 'axios';
-// import {store} from '../../data/store';
 
-// export default {
-//   data() {
-//     return {
-//         projects: [],
+import axios from 'axios';
+import {store} from '../../data/store'
 
-//         pagination: {
-//           next: null,
-//           prev: null,
-//           //array di tutti i link a cui posso andare
-//           links: null,
-//         }
-//       };  
-//     },
 
-//     methods: {
-//         fetchProjects(uri = store.api.baseUrl + 'projects') {
-//             axios
-//             .get(uri)
-//             .then((response) => {
-//                 this.projects = response.data.data;
-                
-//                 this.pagination.prev = response.data.prev_page_url;
-//                 this.pagination.next = response.data.next_page_url;
-//                 this.pagination.links = response.data.links;
-//             });
-//         },
-//     },
-    
-//     created() {
-//         this.fetchProjects();
-//     },
-// }
+export default {
+
+props: { pagination: Array },
+emits: ['change-page']
+
+}
 
 </script>
 
+
 <template>
-     <!-- <nav aria-label="Page navigation example">
-        <ul class="pagination  m-5">
-            <li><button class="btn btn-primary" @click="fetchProjects(pagination.prev)">Previous page</button> </li>
 
-            <li class="page-item"
-                v-for="link in pagination.links"
-                @click="fetchProjects(link.url)">
-                <a class="page-link"
-                herf="#"
-                v-html="link.label"></a>
+<div class="container">
+    <nav aria-label="..." class="mt-3">
+        <ul class="pagination">
+            <!-- comodo per getire tante classi -->
+            <li class="page-item "
+            :class= "{
+                disabled: !link.url
+            }"
+            v-for="link in pagination"
+            @click="$emit('change-page', link.url)">
+            <a class="page-link" 
+            :class=" link.active ? 'active': ''"
+            v-html="link.label"></a>
             </li>
-
-            <li><button class="btn btn-primary" @click="fetchProjects(pagination.next)">Next page</button></li>
         </ul>
-    </nav> -->
+    </nav>
+</div>
 
 </template>
 
-<style lang="scss"></style>
+
+
+<style lang="scss">
+
+</style>
