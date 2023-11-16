@@ -5,6 +5,7 @@ import {store} from '../../data/store'
 
 import ProjectCard from './ProjectCard.vue';
 import PaginationUi from '../ui/PaginationUi.vue';
+import ContactForm from '../ContactForm.vue';
 
 
 export default {
@@ -35,7 +36,7 @@ export default {
         this.fetchProjects();
     },
 
-    components: { ProjectCard, PaginationUi },
+    components: { ProjectCard, PaginationUi, ContactForm },
 }
 
 </script>
@@ -46,6 +47,7 @@ export default {
 <div class="container">
     <h1>  Lista progetti </h1>
 
+<ContactForm></ContactForm>
   <PaginationUi
   :pagination="pagination"
   @change-page="fetchProjects"

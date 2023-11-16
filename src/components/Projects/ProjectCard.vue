@@ -6,6 +6,13 @@ export default {
         return { }
     },
 
+    computed:
+    {
+        abstract() {
+            let str_end = this.project.description.length > 100 ? '...' : '';
+            return this.project.description.substr(0, 100) + str_end;
+        }
+    },
     props: {
         project: Object,
         isDetail: Boolean,
@@ -40,13 +47,13 @@ export default {
         <div class="card-body">
         <h5 class="text-center"> {{ project.title }}</h5>
        
-            <!-- <img 
+            <img 
             v-if="project.cover_image" 
             :src="project.cover_image" 
             class="img-fluid mb-1 rounded" 
-            > -->
+            >
 
-            <p> <b>Descrizione:</b> {{ project.description }}</p>
+            <p> <b>Descrizione:</b> {{ this.abstract }}</p>
             <p> <b>Data:</b>{{ project.date }}</p>
             <p> <b>Link: </b>
                 <a href="javascript:void(0)">{{ project.link }}</a>
